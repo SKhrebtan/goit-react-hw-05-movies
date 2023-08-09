@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import { lazy } from 'react';
+import { useEffect, useState, lazy } from 'react';
+
+ 
 const TrendingList = lazy(() => import('../components/TrendingList/TrendingList'))
 
   async function FetchFilms() {
@@ -8,30 +9,14 @@ const TrendingList = lazy(() => import('../components/TrendingList/TrendingList'
              return data
          }
 const Home = () => {
+
     const [films, setFilms] = useState([]);
-    useEffect(() => {
+       useEffect(() => {
        
-      FetchFilms().then(({ results }) => setFilms(films => [...results]))     
+      FetchFilms().then(({ results }) => setFilms([...results]))     
      },[])
     
-    return (<div><TrendingList movies={films} /></div>)
+    return <TrendingList movies={films} />
 }
 
 export default Home;
-
-    // FetchFilms().then(({ results }) => {
-    //          const recievedMovies = [];
-    //          results.map(({ id, original_title, vote_average, overview, poster_path }) => {
-    //              const newMovie = {
-    //                  id,
-    //                  title: original_title,
-    //                  overview,
-    //                  poster: poster_path,
-    //                  user_score: vote_average,
-    //              }
-    //           return  recievedMovies.push(newMovie)
-    //          }
-    //                         )
-    //          setFilms(recievedMovies);
-            
-    //      })

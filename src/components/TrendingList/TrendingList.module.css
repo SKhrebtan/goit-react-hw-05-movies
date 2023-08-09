@@ -1,0 +1,21 @@
+.trending_list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* justify-content: space-between; */
+}
+
+.trending_list_link {
+  width: calc((100% - 60px) / 4);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.trending_list_title {
+  width: 100%;
+}
