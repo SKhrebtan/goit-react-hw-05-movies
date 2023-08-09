@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 
 
 const MovieList = ({ movies }) => {
-    const location = useLocation()
+    const location = useLocation();
     console.log(location)
     return (
         <ul >

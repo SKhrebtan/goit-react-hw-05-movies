@@ -1,4 +1,5 @@
 import { lazy, useState, useEffect } from "react";
+// import {  useLocation } from "react-router-dom";
 const Searchbar = lazy(() => import('../components/Searchbar/Searchbar'))
 const MovieList = lazy(() => import('../components/MovieList/MovieList'))
 async function FetchFilms(value) {
@@ -10,9 +11,9 @@ async function FetchFilms(value) {
 const Movies = () => {
     const [value, setValue] = useState('')
     const [result, setResult] = useState([])
- 
-    function handleSubmit(a) {
-        setValue(a)
+    // const location = useLocation()
+    function handleSubmit(value) {
+        setValue(value)
     }
     useEffect(() => {
         if(value)
@@ -21,7 +22,7 @@ const Movies = () => {
     return (
         <div>
             <Searchbar onSubmit={handleSubmit} />
-            <MovieList movies={result}/>
+            <MovieList movies={result} />
     </div>)
 }
 

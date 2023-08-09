@@ -1,9 +1,8 @@
 import css from './MovieInfo.module.css';
-import { useLocation } from 'react-router-dom';
+
 
 export default function MovieInfo({ movie }) {
-    const location = useLocation();
-    console.log(location)
+    
     const { original_title, overview, poster_path, vote_average, genres } = movie;
     const filmgenres = [];
     if (genres) {

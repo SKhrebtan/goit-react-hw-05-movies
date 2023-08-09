@@ -1,5 +1,5 @@
-import { Suspense, useState, useEffect, lazy } from "react";
-import { useParams, NavLink, Outlet } from "react-router-dom";
+import { Suspense, useState, useEffect, lazy, useRef } from "react";
+import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
 const MovieInfo = lazy(()=>import('../components/MovieInfo/MovieInfo'))
 
 async function FetchFilms(id) {
@@ -12,16 +12,19 @@ async function FetchFilms(id) {
 const MovieDetails = () => {
     const [film, setFilm] = useState({})
     const { movieId } = useParams();
-   
+    const location = useLocation();
+    console.log(location)
+    const backLinkLocationRef = useRef(location.state?.from ?? '/movies')
     useEffect(() => {
          FetchFilms(movieId).then(data => setFilm(data))
     }, [movieId])
     return (
         <div>
-            <NavLink to='/movies'>Back to the Movies</NavLink>
-            <MovieInfo movie={film}  />
+            <NavLink to={backLinkLocationRef.current}>Back to the Movies</NavLink>
+            <MovieInfo movie={film} />
+            <h2>Additional information</h2>
             <ul>
-                <h3>Additional information</h3>
+                
                 <li>
                     <NavLink to="cast">Cast</NavLink>
                 </li>
