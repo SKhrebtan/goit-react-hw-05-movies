@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Layout = () => {
@@ -10,8 +11,10 @@ const Layout = () => {
             </ul>
             </nav>
             <main>
-                <Outlet />
-            </main>
+                <Suspense fallback="Loading">
+                    <Outlet />
+                </Suspense>
+                            </main>
             
         </div>
        

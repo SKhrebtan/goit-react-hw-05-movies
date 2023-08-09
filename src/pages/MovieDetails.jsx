@@ -1,21 +1,25 @@
-import { useParams, Link, Outlet } from "react-router-dom";
+import { Suspense } from "react";
+import { useParams, NavLink, Outlet } from "react-router-dom";
 
 const MovieDetails = () => {
-    const {movieId} = useParams();
+    const { movieId } = useParams();
     console.log(movieId)
     return (
         <div>
             <h1>One movie details: {movieId}</h1>
         <ul>
                 <li>
-                    <Link to="cast">Cast</Link>
+                    <NavLink to="cast">Cast</NavLink>
                 </li>
                 <li>
-                    <Link to="reviews">Reviews</Link>
+                    <NavLink to="reviews">Reviews</NavLink>
                 </li>
             </ul>
-            <Outlet/>
+            <Suspense fallback="isLoading">
+                 <Outlet/>
+            </Suspense>
+           
         </div>
     )
 }
-export default MovieDetails
+export default MovieDetails;

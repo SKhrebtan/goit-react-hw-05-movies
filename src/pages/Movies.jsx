@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Movies = () => {
+    const film = useParams();
+    console.log(film)
     return (
         <div>
         <h1>Movies Data</h1>
