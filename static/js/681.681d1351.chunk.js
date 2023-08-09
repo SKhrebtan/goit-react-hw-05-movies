@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[681],{681:function(e,t,r){r.r(t);var u=r(184);t.default=function(){return(0,u.jsx)("div",{children:"Pruvit Reviews"})}}}]);
-//# sourceMappingURL=681.681d1351.chunk.js.map
