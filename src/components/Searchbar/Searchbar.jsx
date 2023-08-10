@@ -1,14 +1,14 @@
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Searchbar({onSubmit}) {
     const [searchParams, setSearchParams] = useSearchParams();
-    let movieId = searchParams.get('movieId') ?? '';
-    const location = useLocation();
-console.log(location)
+    let movieId = searchParams.get('query') ?? '';
+ 
     useEffect(() => {
-        onSubmit(location.search)
+          const search = searchParams.get('query') ?? '';
+          onSubmit(search)
         // eslint-disable-next-line
      }, [])
    
@@ -17,12 +17,13 @@ console.log(location)
         if (value === '') {
             return setSearchParams({})
         }
-        setSearchParams({ movieId: value })
-        }
+        setSearchParams({ query: value })
+    }
+    
     function handleSubmit(e) {
         e.preventDefault();
         onSubmit(movieId)
-        setSearchParams(movieId)
+       
 }
     return (
         <form onSubmit={handleSubmit}>
