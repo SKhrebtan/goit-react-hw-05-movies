@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function CastList({ cast }) {
     console.log(cast)
     return (
@@ -13,4 +15,8 @@ export default function CastList({ cast }) {
             })}
         </ul>
     )
+}
+
+CastList.propTypes = {
+    cast: PropTypes.array,
 }

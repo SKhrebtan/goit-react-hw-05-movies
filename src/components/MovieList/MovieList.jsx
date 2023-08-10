@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 import noimage from '../../images/noimage.jpg'
 import css from './MovieList.module.css'
 
@@ -25,3 +26,7 @@ const MovieList = ({ movies }) => {
 }
 
 export default MovieList;
+
+MovieList.propTypes = {
+    movies: PropTypes.array,
+}

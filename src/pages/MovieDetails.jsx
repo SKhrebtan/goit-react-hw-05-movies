@@ -1,5 +1,6 @@
 import { Suspense, useState, useEffect, lazy, useRef } from "react";
-import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
+import { useParams, NavLink, Link, Outlet, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 const MovieInfo = lazy(()=>import('../components/MovieInfo/MovieInfo'))
 
 async function FetchFilms(id) {
@@ -9,19 +10,19 @@ async function FetchFilms(id) {
     return data
 }
          
-const MovieDetails = ({firstsearch}) => {
+const MovieDetails = () => {
     const [film, setFilm] = useState({})
     const { movieId } = useParams();
     const location = useLocation();
     const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
  
-    const { pathname, search } = backLinkLocationRef.current;
+    // const { pathname, search } = backLinkLocationRef.current;
     useEffect(() => {
          FetchFilms(movieId).then(data => setFilm(data))
     }, [movieId])
     return (
         <div>
-            <NavLink to={`${pathname}${search}`}>Back to the Movies</NavLink>
+            <Link to={backLinkLocationRef.current}>Back to the Movies</Link>
             <MovieInfo movie={film} />
             <h2>Additional information</h2>
             <ul>
@@ -41,3 +42,7 @@ const MovieDetails = ({firstsearch}) => {
     )
 }
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+    film: PropTypes.object,
+}

@@ -1,8 +1,9 @@
 import css from './MovieInfo.module.css';
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
 
-export default function MovieInfo({ movie }) {
+export default function MovieInfo ({ movie }) {
     const location = useLocation();
     console.log(location)
     const { original_title, overview, poster_path, vote_average, genres } = movie;
@@ -26,4 +27,8 @@ export default function MovieInfo({ movie }) {
             </div>
         </div>
     )
+}
+
+MovieInfo.propTypes = {
+    movie: PropTypes.object,
 }

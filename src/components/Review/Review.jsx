@@ -1,19 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, lazy } from "react";
+import FetchReviews from '../Fetches/FetchReviews'
+import PropTypes from 'prop-types';
 const ReviewList = lazy(() => import('../ReviewList/ReviewList'))
 
 
-async function FetchFilms(id) {
-             const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=7704615e0d5baf851bf04ec2239749fe&total_results=30`);
-    const data = await response.json();
-    
-             return data
-}
+
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     const {movieId} = useParams();
     useEffect(() => {
-    FetchFilms(movieId).then(({results})=>setReviews(results))
+    FetchReviews(movieId).then(({results})=>setReviews(results))
     }, [movieId])
     console.log(reviews)
     return (
@@ -21,3 +18,7 @@ const Reviews = () => {
 }
 
 export default Reviews;
+
+Reviews.propTypes = {
+    reviews: PropTypes.array,
+}
