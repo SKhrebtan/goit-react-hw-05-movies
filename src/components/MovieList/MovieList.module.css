@@ -1,4 +1,4 @@
-.trending_list {
+.movie_list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +6,7 @@
   /* justify-content: space-between; */
 }
 
-.trending_list_link {
+.movie_list_link {
   width: calc((100% - 60px) / 4);
 }
 
@@ -14,8 +14,9 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
-.trending_list_title {
+.liitem {
   width: 100%;
 }

@@ -9,18 +9,19 @@ async function FetchFilms(id) {
     return data
 }
          
-const MovieDetails = () => {
+const MovieDetails = ({firstsearch}) => {
     const [film, setFilm] = useState({})
     const { movieId } = useParams();
     const location = useLocation();
-    console.log(location)
-    const backLinkLocationRef = useRef(location.state?.from ?? '/movies')
+    const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
+ 
+    const { pathname, search } = backLinkLocationRef.current;
     useEffect(() => {
          FetchFilms(movieId).then(data => setFilm(data))
     }, [movieId])
     return (
         <div>
-            <NavLink to={backLinkLocationRef.current}>Back to the Movies</NavLink>
+            <NavLink to={`${pathname}${search}`}>Back to the Movies</NavLink>
             <MovieInfo movie={film} />
             <h2>Additional information</h2>
             <ul>
