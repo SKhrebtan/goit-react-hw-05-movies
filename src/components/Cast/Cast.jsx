@@ -43,4 +43,6 @@ export default Cast;
 
 Cast.propTypes = {
     cast: PropTypes.array,
+    status: PropTypes.string,
+    error: PropTypes.string,
 }
