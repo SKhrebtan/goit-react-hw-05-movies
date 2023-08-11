@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from 'react';
+import {Form, Input, Button} from './Searchbar.styled'
 import PropTypes from 'prop-types';
 
 export default function Searchbar({onSubmit}) {
@@ -26,12 +27,12 @@ export default function Searchbar({onSubmit}) {
        
 }
     return (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
         <label>
-            <input type="text" value={movieId} onChange={handleInputChange} />
+            <Input type="text" value={movieId} onChange={handleInputChange} />
             </label>
-            <button>Search</button>
-        </form >
+            <Button>Search</Button>
+        </Form >
     )
 }
 

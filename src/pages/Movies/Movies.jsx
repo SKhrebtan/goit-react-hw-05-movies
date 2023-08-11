@@ -1,11 +1,11 @@
 import { lazy, useState, useEffect } from "react";
-import FetchMoviesBySearch from '../components/Fetches/FetchMoviesBySearch';
+import FetchMoviesBySearch from '../../components/Fetches/FetchMoviesBySearch';
 import PropTypes from 'prop-types';
-import empty from '../images/empty.jpg';
-import errorImg from '../images/error.jpg';
+import empty from '../../images/empty.jpg';
+import errorImg from '../../images/error.jpg';
 import {FallingLines} from 'react-loader-spinner';
-const Searchbar = lazy(() => import('../components/Searchbar/Searchbar'));
-const MovieList = lazy(() => import('../components/MovieList/MovieList'));
+const Searchbar = lazy(() => import('../../components/Searchbar/Searchbar'));
+const MovieList = lazy(() => import('../../components/MovieList/MovieList'));
 
 
 const Movies = () => {

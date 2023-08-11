@@ -1,7 +1,7 @@
 import { Suspense, useState, useEffect, lazy, useRef } from "react";
 import { useParams, NavLink, Link, Outlet, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
-const MovieInfo = lazy(()=>import('../components/MovieInfo/MovieInfo'))
+const MovieInfo = lazy(()=>import('../../components/MovieInfo/MovieInfo'))
 
 async function FetchFilms(id) {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=7704615e0d5baf851bf04ec2239749fe`);

@@ -1,10 +1,10 @@
 import { useEffect, useState, lazy } from 'react';
 import PropTypes from 'prop-types';
-import FetchMovies from '../components/Fetches/FetchMovies';
+import FetchMovies from '../../components/Fetches/FetchMovies';
 import { RevolvingDot } from 'react-loader-spinner';
-import errorImg from '../images/error.jpg';
+import errorImg from '../../images/error.jpg';
  
-const MovieList = lazy(() => import('../components/MovieList/MovieList'))
+const MovieList = lazy(() => import('../../components/MovieList/MovieList'))
 
 const Home = () => {
     const [status, setStatus] = useState('idle');
