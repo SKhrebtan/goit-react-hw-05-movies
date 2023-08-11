@@ -1,7 +1,7 @@
-import css from './MovieInfo.module.css';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-
+import {Wrapper,Thumb,InfoContainer,Title,InfoText,Image,InfoTextTitle} from './MovieInfo.styled'
+import noimage from '../../images/noimage.jpg'
 
 export default function MovieInfo ({ movie }) {
     const location = useLocation();
@@ -13,19 +13,21 @@ export default function MovieInfo ({ movie }) {
    }
    
     return (
-        <div className={css.wrapper}>
-            <div className={css.thumb}>
-                <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={original_title}></img>
-            </div>
-            <div>
-                <h1>{original_title}</h1>
-                <p>User score: {vote_average}</p>
-                <p>Overview</p>
-                <p>{overview}</p>
-                 <p>Genres</p>
-                <p>{filmgenres.join(', ')}</p>
-            </div>
-        </div>
+        <Wrapper>
+            <Thumb>
+                {poster_path === null
+                    ? <Image src={noimage} alt="noimage"></Image>
+                    : <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={original_title}></Image>}
+            </Thumb>
+            <InfoContainer>
+                <Title>{original_title}</Title>
+                <InfoText>User score: {vote_average}</InfoText>
+                <InfoTextTitle>Overview</InfoTextTitle>
+                <InfoText>{overview}</InfoText>
+                 <InfoTextTitle>Genres</InfoTextTitle>
+                <InfoText>{filmgenres.join(', ')}</InfoText>
+            </InfoContainer>
+        </Wrapper>
     )
 }
 

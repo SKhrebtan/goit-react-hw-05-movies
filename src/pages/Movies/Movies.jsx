@@ -7,7 +7,6 @@ import {FallingLines} from 'react-loader-spinner';
 const Searchbar = lazy(() => import('../../components/Searchbar/Searchbar'));
 const MovieList = lazy(() => import('../../components/MovieList/MovieList'));
 
-
 const Movies = () => {
     const [value, setValue] = useState('');
     const [result, setResult] = useState([]);
@@ -16,8 +15,7 @@ const Movies = () => {
     
     function handleSubmit(value) {
         setValue(value)
-      
-    }
+        }
     
     useEffect(() => {
             if (!value) return;
@@ -46,7 +44,6 @@ const Movies = () => {
     },[value])
     return (
         <div>
-            {/* <SearchBox setSearchParams={setSearchParams} /> */}
             <Searchbar onSubmit={handleSubmit}/>
             {status === 'pending' && <FallingLines />}
             {status === 'empty' && <img src={empty} alt="empty"></img>}

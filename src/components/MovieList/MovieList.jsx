@@ -10,6 +10,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
   border: 1px solid black;
+    &:hover {
+     transform: scale(1.03);
+   }
   &:hover,
   :focus {
     color:orange;
@@ -17,12 +20,9 @@ const StyledLink = styled(Link)`
   }
   
 `
-
 const MovieList = ({ movies }) => {
-
     const location = useLocation();
-    
-      return (
+          return (
         <List>
             {movies.map(({ id, title, vote_average, poster_path, original_title, original_name }) => {
                 return (

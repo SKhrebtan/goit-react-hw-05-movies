@@ -14,7 +14,7 @@ const Reviews = () => {
     }, [movieId])
     console.log(reviews)
     return (
-       reviews.length === 0 ? 'Sorry, no reviews' : <ReviewList reviews={reviews} /> )
+       reviews.length === 0 ? <h2>Sorry, no reviews</h2> : <ReviewList reviews={reviews} /> )
 }
 
 export default Reviews;
