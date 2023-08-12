@@ -1,18 +1,27 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
+
+ display: flex;
   gap: 30px;
-  
+  flex-direction: column;
+
+@media screen and (min-width: 666px){
+    flex-direction: row;}
 `
 
 export const Thumb = styled.div`
+flex-shrink: 0;
+@media screen and (min-width: 666px){
+height:375px;
+width: 250px; 
+}
 
 
 `
 
 export const InfoContainer = styled.div`
-width: 480px;
+max-width: 480px;
 `
 
 export const Title = styled.h2`
@@ -25,8 +34,7 @@ font-style: italic;
 export const Image = styled.img`
 display: block;
 object-fit: cover;
-height:375px;
-width: 250px;
+width:100%;
 `
 
 export const InfoTextTitle = styled.h3`

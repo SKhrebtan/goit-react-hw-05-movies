@@ -1,25 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
 import noimage from '../../images/noimage.jpg'
-import { List, ListItem, Thumb, Image, Title, Text } from './MovieList.styled'
-import styled from 'styled-components';
+import { List, ListItem, Thumb, Image, Title, Text,StyledLink } from './MovieList.styled'
 
-const StyledLink = styled(Link)`
-  width: calc((100% - 68px) / 4);
-  cursor:pointer;
-  text-decoration: none;
-  color: black;
-  border: 1px solid black;
-    &:hover {
-     transform: scale(1.03);
-   }
-  &:hover,
-  :focus {
-    color:orange;
-    border-color: orange;
-  }
-  
-`
+
+
 const MovieList = ({ movies }) => {
     const location = useLocation();
           return (
