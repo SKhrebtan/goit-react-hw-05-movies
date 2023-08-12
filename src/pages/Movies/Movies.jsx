@@ -71,7 +71,7 @@ const Movies = () => {
             {status === 'pending' && <FallingLines />}
             {status === 'empty' && <img src={empty} alt="empty"></img>}
             {status === 'error' && <img src={errorImg} alt={error}></img>}
-            {status === 'resolved' && <MovieList movies={result} />}
+            <MovieList movies={result} />
             {result.length > 0 && <button type="button"
                 ref={ref}
                 onClick={() => setPage(page => page + 1)}
