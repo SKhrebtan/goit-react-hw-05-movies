@@ -1,5 +1,7 @@
 import { lazy, useState, useEffect } from "react";
+import { useInView } from 'react-intersection-observer';
 import FetchMoviesBySearch from '../../components/Fetches/FetchMoviesBySearch';
+
 import PropTypes from 'prop-types';
 import empty from '../../images/empty.jpg';
 import errorImg from '../../images/error.jpg';
@@ -12,16 +14,23 @@ const Movies = () => {
     const [result, setResult] = useState([]);
     const [error, setError] = useState(null);
     const [status, setStatus] = useState('idle');
+    const [page, setPage] = useState(1);
+    const { ref, inView } = useInView();
+//     const messagesEndRef = useRef(null);
+    
+//   const scrollToBottom = () => {
+//     messagesEndRef.current && messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+//     }
     
     function handleSubmit(value) {
         setValue(value)
+        setPage(1)
         }
     
     useEffect(() => {
             if (!value) return;
-            console.log(value);
-            setStatus('pending')
-            FetchMoviesBySearch(value)
+             setStatus('pending')
+            FetchMoviesBySearch(value, page)
                 .then(response => {
         if (response.ok) {
            return response.json();
@@ -31,7 +40,9 @@ const Movies = () => {
         );
                })
                 .then(({ results, total_results }) => {
-                          setResult([...results],
+                    
+                          setResult(prevResults => page === 1 ? results : [...prevResults, ...results],
+                           
                           setStatus(status => total_results === 0 ? 'empty' : 'resolved')
                           )
                       })
@@ -41,7 +52,19 @@ const Movies = () => {
       }
     )
         
-    },[value])
+    }, [value, page])
+   
+
+    useEffect(() => {
+        if (inView) {
+        setPage(page => page + 1)
+    }
+    }, [inView])
+
+    // useEffect( () => {
+    // scrollToBottom()
+    // }, [result]);
+    
     return (
         <div>
             <Searchbar onSubmit={handleSubmit}/>
@@ -49,6 +72,11 @@ const Movies = () => {
             {status === 'empty' && <img src={empty} alt="empty"></img>}
             {status === 'error' && <img src={errorImg} alt={error}></img>}
             {status === 'resolved' && <MovieList movies={result} />}
+            {result.length > 0 && <button type="button"
+                ref={ref}
+                onClick={() => setPage(page => page + 1)}
+            >Load more {inView}</button>}
+            {/* < div ref = { messagesEndRef } />   */}
         </div>
     )
 }

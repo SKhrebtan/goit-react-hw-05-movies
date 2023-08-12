@@ -10,6 +10,7 @@ const Home = () => {
     const [status, setStatus] = useState('idle');
     const [error, setError] = useState(null)
     const [films, setFilms] = useState([]);
+    
      
     useEffect(() => {
         setStatus('pending');
@@ -39,6 +40,7 @@ const Home = () => {
             {status === 'idle' && <RevolvingDot />}
             {status === 'rejected' && <img src={errorImg} alt={error}></img>}
             {status === 'resolved' && <MovieList movies={films} />}
+            
         </div>
     )
 }
