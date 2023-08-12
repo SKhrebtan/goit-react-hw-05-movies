@@ -8,14 +8,22 @@ const ReviewList = lazy(() => import('../ReviewList/ReviewList'))
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
-    const {movieId} = useParams();
+    const { movieId } = useParams();
     useEffect(() => {
-    FetchReviews(movieId).then(({results})=>setReviews(results))
+        FetchReviews(movieId).then(({ results }) => setReviews(results)).catch(error => console.log(error))
     }, [movieId])
     console.log(reviews)
     return (
-       reviews.length === 0 ? <h2>Sorry, no reviews</h2> : <ReviewList reviews={reviews} /> )
+        <>
+            
+
+            {<ReviewList reviews={reviews} /> ?? <h2>Sorry, no reviews</h2>}
+        </>
+       
+    )
 }
+
+
 
 export default Reviews;
 

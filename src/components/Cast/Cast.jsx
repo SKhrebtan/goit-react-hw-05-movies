@@ -9,7 +9,7 @@ const Cast = () => {
     const [status, setStatus] = useState('idle');
     const [error, setError] = useState(null)
     const [cast, setCast] = useState([])
-    const {movieId} = useParams();
+     const {movieId} = useParams();
     useEffect(() => {
         setStatus('pending');
     FetchCast(movieId).then(response => {
@@ -20,9 +20,9 @@ const Cast = () => {
           new Error('Щось пішло не так, повторіть спробу')
         );
                })
-        .then(({ cast }) => {
-            setCast(cast)
-            setStatus(status=> cast.length === 0 ? 'empty' : 'resolved')
+        .then(({cast}) => {
+                        setCast(cast)
+                      setStatus(status=> cast.length === 0 ? 'empty' : 'resolved')
         })
            .catch(error => { 
         setError(error);
@@ -32,7 +32,7 @@ const Cast = () => {
     }, [movieId])
     return (
     <>  {status === 'pending' && <div>Loading</div>}
-            {status === 'resolved' && <CastList cast={cast} />}
+        {status === 'resolved' && <CastList cast={cast} />}
             {status === 'empty' && <h2>Sorry, no information about actors involved</h2>}
             {status === 'error' && <h2>Щось пішло не так: {error}</h2>}
         </>

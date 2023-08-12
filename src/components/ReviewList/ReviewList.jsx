@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 export default function ReviewList({ reviews }) {
-    
+    console.log(reviews)
     return (
         <ul>
+            {reviews.length === 0 && <h1>SORRY, NO INFO</h1>}
             {reviews.map(({ author, content, id }) => {
                 return (
                     <li key={id}>

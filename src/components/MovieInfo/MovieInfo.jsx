@@ -11,7 +11,7 @@ export default function MovieInfo ({ movie }) {
     if (genres) {
        Object.values(genres).forEach(value => filmgenres.push(value.name)) 
    }
-   
+   console.log(movie)
     return (
         <Wrapper>
             <Thumb>

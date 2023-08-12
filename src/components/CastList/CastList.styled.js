@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import {NavLink} from 'react-router-dom'
 export const List = styled.ul`
 display: flex;
 flex-wrap: wrap;
@@ -9,8 +9,7 @@ margin:0;
 margin-top: 15px;
 padding:0;
 `
-
-export const ListItem = styled.li`
+export const StyledNavLink = styled(NavLink)`
 width: 300px;
 @media screen and (min-width: 400px){
     width: calc((100% - 10px) / 2);
@@ -35,6 +34,15 @@ text-align: center;
      &:hover {
      transform: scale(1.03);
    }
+   text-decoration: none;
+
+`
+
+
+export const ListItem = styled.li`
+
+
+
 `
 
 export const Image = styled.img`
@@ -46,10 +54,12 @@ object-fit: cover;
 
 export const Title = styled.h2`
 margin: 5px 0;
+color:black;
 `
 
 export const Text = styled.p`
 margin: 0;
+color: orange;
 `
 export const Thumb = styled.div`
 width: 100%;
